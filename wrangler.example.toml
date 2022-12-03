@@ -1,0 +1,8 @@
+name = "faq-bot"
+main = "src/index.mts"
+compatibility_date = "2022-12-01"
+kv_namespaces = [
+    { binding = "server_config", id = ""}
+]
+[vars]
+public_key = ""
