@@ -6,11 +6,11 @@ The data collected includes, but is not limited to Discord user ID values, Disco
 ## Access to data
 
 Access to data is only permitted to the Bot's developers, and only in the scope required for the development, testing, and implementation of features for the Bot.
-Bot data is not sold, provided to, or shared with any third party, expect where required by law or by a Terms of Service agreement.
+Bot data is not sold, provided to, or shared with any third party, except where required by law or by a Terms of Service agreement.
 
 ## Storage of data
 
-Data is stored within a Cloudflare Workers Key/Value database. No gauruntee is provided towards the data security, and the owners assume no liability for the unintentional or malicious breach of data. In the event of an unauthorised Data access, users will be notified upon their next usage of the application.
+Data is stored within a Cloudflare Workers Key/Value database. No guarantee is provided towards the data security, and the owners assume no liability for the unintentional or malicious breach of data. In the event of an unauthorised Data access, users will be notified upon their next usage of the application within the server.
 
 ## Underage Users
 
