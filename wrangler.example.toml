@@ -6,3 +6,8 @@ kv_namespaces = [
 ]
 [vars]
 public_key = ""
+# bot_token = ""
+# Run `echo <VALUE> | wrangler secret put bot_token` to set this
+
+[triggers]
+crons = ["24 9 * * *"]

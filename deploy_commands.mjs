@@ -86,7 +86,7 @@ async function setCommands() {
                         min_length: 1,
                     },
                 ],
-                dm_permission: false,
+                dm_permission: true,
             },
             {
                 name: "faq",
@@ -103,7 +103,7 @@ async function setCommands() {
                         min_length: 1,
                     },
                 ],
-                dm_permission: false,
+                dm_permission: true,
             },
             {
                 type: 1,
@@ -128,7 +128,7 @@ async function setCommands() {
                         min_length: 1,
                     },
                 ],
-                dm_permission: false,
+                dm_permission: true,
             },
         ]),
     });

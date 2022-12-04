@@ -3,7 +3,7 @@ import type { Env } from "./env.mjs";
 import { handleSlashCommand } from "./handleSlashCommand.mjs";
 import { unknownResponse } from "./unknownResponse.mjs";
 
-export function handleCommand(interaction: APIApplicationCommandInteraction, env: Env, context: FetchEvent): Response {
+export function handleCommand(interaction: APIApplicationCommandInteraction, env: Env, context: ExecutionContext): Response {
     // check if this is a slash command.
     // Because it's possible for multiple commands of different types to share the same name,
     // We have to route them to the correct handler based on the type.

@@ -1,29 +1,14 @@
-import type { APIChatInputApplicationCommandGuildInteraction } from "discord-api-types/v10";
+import type { APIApplicationCommandInteractionDataStringOption, APIChatInputApplicationCommandInteraction } from "discord-api-types/v10";
 import type { Env } from "./env.mjs";
 import type { FaqEntry } from "./FaqEntry.mjs";
+import { getServerKeyForInteraction } from "./getServerKeyForInteraction.mjs";
 import { updateResponse } from "./updateResponse.mjs";
 
-export async function callbackFaq(interaction: APIChatInputApplicationCommandGuildInteraction, env: Env): Promise<void> {
-    const {
-        guild_id,
-        data: {
-            options: commandOptions,
-        },
-    } = interaction;
-    // get the question parameter.
-    const question = commandOptions!.find((option) => {
-        return option.name === "question";
-    });
-    // satisfy the type checker
-    if (question?.type !== 3) {
-        await updateResponse(interaction, {
-            content: "You must provide a question",
-            flags: 4,
-        });
-        return;
-    }
+export async function callbackFaq(interaction: APIChatInputApplicationCommandInteraction, env: Env, question: APIApplicationCommandInteractionDataStringOption): Promise<void> {
+    // get the namespace
+    const namespace = getServerKeyForInteraction(interaction);
     // get the faq entry from the database.
-    const faq_content = await env.server_config.get<FaqEntry>(`${guild_id}:${question.value.toLowerCase().trim()}`, {
+    const faq_content = await env.server_config.get<FaqEntry>(`${namespace}:${question.value.toLowerCase().trim()}`, {
         type: "json",
     });
     // if the faq entry doesn't exist, return an error.

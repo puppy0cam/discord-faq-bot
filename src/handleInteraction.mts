@@ -1,11 +1,11 @@
-import type { APIApplicationCommandAutocompleteGuildInteraction, APIInteraction } from "discord-api-types/v10";
+import type { APIInteraction } from "discord-api-types/v10";
 import { createPongResponse } from "./createPongResponse.mjs";
 import type { Env } from "./env.mjs";
 import { handleAutocompleteInteraction } from "./handleAutocompleteInteraction.mjs";
 import { handleCommand } from "./handleCommand.mjs";
 import { unknownResponse } from "./unknownResponse.mjs";
 
-export function handleInteraction(interaction: APIInteraction, env: Env, context: FetchEvent): Promise<Response> | Response {
+export function handleInteraction(interaction: APIInteraction, env: Env, context: ExecutionContext): Promise<Response> | Response {
     if (interaction.type === 1) {
         // discord is pinging us. Probably to make sure we are capable of responding to interactions.
         // Or maybe they are double checking that we properly checked the signature.
@@ -22,7 +22,7 @@ export function handleInteraction(interaction: APIInteraction, env: Env, context
         // this is an autocomplete interaction.
         // We actually can't defer a response for later,
         // so the request response could theoretically fail the timeout.
-        return handleAutocompleteInteraction(interaction as APIApplicationCommandAutocompleteGuildInteraction, env);
+        return handleAutocompleteInteraction(interaction, env);
     }
     // no idea what it is.
     // We can *try* to send a response that says we don't know what it is.
